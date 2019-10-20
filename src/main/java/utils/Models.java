@@ -94,31 +94,44 @@ public class Models {
         String newMoon = "new-moon";
         String growingMoon = "growing-moon";
         String firstQuarter = "first-quarter";
-        for (int i = 1; i < responseForecast().length(); i++) {
+        int secondDay = 1;
+        int moon_codeZero = 0;
+        int moon_codeOne = 1;
+        int moon_codeThree = 3;
+        int moon_codeFour = 4;
+        int moon_codeFive = 5;
+        int moon_codeSeven = 7;
+        int moon_codeEight = 8;
+        int moon_codeNine = 9;
+        int moon_codeEleven = 11;
+        int moon_codeTwelve = 12;
+        int moon_codeThirteen = 13;
+        int moon_codeFifteen = 15;
+        for (int i = secondDay; i < responseForecast().length(); i++) {
             int moon_code = responseForecast().getJSONObject(i).getInt(moon_codeField);
             String moon_text = responseForecast().getJSONObject(i).getString(moon_textField);
-            if (moon_code == 0) {
+            if (moon_code == moon_codeZero) {
                 return Boolean.parseBoolean(String.valueOf(moon_text.contains(fullMoonField)));
             }
-            if (moon_code > 1 && moon_code < 3) {
+            if (moon_code > moon_codeOne && moon_code < moon_codeThree) {
                 return Boolean.parseBoolean(String.valueOf(moon_text.contains(decreasingMoonField)));
             }
-            if (moon_code == 4) {
+            if (moon_code == moon_codeFour) {
                 return Boolean.parseBoolean(String.valueOf(moon_text.contains(lastQuarterField)));
             }
-            if (moon_code >= 5 && moon_code <= 7) {
+            if (moon_code >= moon_codeFive && moon_code <= moon_codeSeven) {
                 return Boolean.parseBoolean(String.valueOf(moon_text.contains(decreasingMoonField)));
             }
-            if (moon_code == 8) {
+            if (moon_code == moon_codeEight) {
                 return Boolean.parseBoolean(String.valueOf(moon_text.contains(newMoon)));
             }
-            if (moon_code >= 9 && moon_code <= 11) {
+            if (moon_code >= moon_codeNine && moon_code <= moon_codeEleven) {
                 return Boolean.parseBoolean(String.valueOf(moon_text.contains(growingMoon)));
             }
-            if (moon_code == 12) {
+            if (moon_code == moon_codeTwelve) {
                 return Boolean.parseBoolean(String.valueOf(moon_text.contains(firstQuarter)));
             }
-            if (moon_code >= 13 && moon_code <= 15)
+            if (moon_code >= moon_codeThirteen && moon_code <= moon_codeFifteen)
                 return Boolean.parseBoolean(String.valueOf(moon_text.contains(growingMoon)));
         }
         return false;
